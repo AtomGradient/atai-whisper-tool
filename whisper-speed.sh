@@ -69,6 +69,7 @@ for segment in $(ls "$SEGMENT_DIR"/*.wav | sort); do
     (
         basename=$(basename "$segment" .wav)
         echo "Processing segment: $segment"
+        sleep 1
         atai-whisper-tool "$segment" --output-dir "$TRANSCRIPT_DIR" --output-name "$basename" --output-format txt || \
             echo "Warning: Failed to transcribe segment $segment"
     ) &
