@@ -1,12 +1,9 @@
-#!/usr/bin/env python
+from setuptools import setup, find_packages
 
-import setuptools
-
-# Read the long description from README.md
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-setuptools.setup(
+setup(
     name="atai-whisper-tool",
     version="0.0.2",
     author="AtomGradient",
@@ -18,7 +15,7 @@ setuptools.setup(
     project_urls={
         "Bug Tracker": "https://github.com/AtomGradient/atai-whisper-tool/issues",
     },
-    packages=setuptools.find_packages(),
+    packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
