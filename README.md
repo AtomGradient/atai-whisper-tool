@@ -208,6 +208,13 @@ atai-whisper-tool audio.wav --temperature 0.2 --best-of 5 --logprob-threshold -1
 - **Outcome:** Fine-tunes the transcription process with custom sampling and decoding parameters for improved quality.
 
 
+## Speed Up Whisper ⚡️
+
+```bash
+./whisper-speed.sh ~/Downloads/203-David-Krakauer-public.mp3
+```
+
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
