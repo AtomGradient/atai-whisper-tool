@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "atai-whisper-tool"
+version = "0.0.2"
+description = "OpenAI Whisper with Apple MPS support"
+readme = "README.md"
+authors = [
+    {name = "AtomGradient", email = "alex@atomgradient.com"}
+]
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = ["audio", "whisper", "mps", "text-extraction", "audio-processing"]
+requires-python = ">=3.7"
+dependencies = [
+    "mlx>=0.1.1",
+    "numba",
+    "numpy",
+    "torch",
+    "tqdm",
+    "more-itertools",
+    "tiktoken",
+    "huggingface_hub",
+    "scipy"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/AtomGradient/atai-whisper-tool"
+"Bug Tracker" = "https://github.com/AtomGradient/atai-whisper-tool/issues"
+
+[project.scripts]
+atai-whisper-tool = "atai_whisper_tool.cli:main"
