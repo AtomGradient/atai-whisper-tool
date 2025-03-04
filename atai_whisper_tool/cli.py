@@ -1,15 +1,36 @@
-# Copyright © 2024 Apple Inc.
-
 import argparse
 import os
 import pathlib
 import traceback
 import warnings
+import subprocess
+import sys
 
 from .whisper import audio
 from .whisper.tokenizer import LANGUAGES, TO_LANGUAGE_CODE
 from .whisper.transcribe import transcribe
 from .whisper.writers import get_writer
+
+
+def run_speedup_mode(audio_file):
+    # Determine the directory of the current script.
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    print(f"run_speedup_mode {script_dir}")
+    # Build the path to whisper-speed.sh in the same directory.
+    speedup_script = os.path.join(script_dir, "whisper-speed.sh")
+    
+    if not os.path.exists(speedup_script):
+        print("Error: whisper-speed.sh not found in the same directory as cli.py", file=sys.stderr)
+        sys.exit(1)
+    
+    # Build the command: we assume extra args are not needed.
+    cmd = ["bash", speedup_script, audio_file]
+    try:
+        subprocess.check_call(cmd)
+    except subprocess.CalledProcessError as e:
+        print(f"Error executing whisper-speed.sh: {e}", file=sys.stderr)
+        sys.exit(e.returncode)
+
 
 
 def build_parser():
@@ -199,6 +220,13 @@ def build_parser():
         default="0",
         help="Comma-separated list start,end,start,end,... timestamps (in seconds) of clips to process, where the last end timestamp defaults to the end of the file",
     )
+
+    parser.add_argument(
+        "--speedup",
+        action="store_true",
+        help="Enable speedup mode: use whisper-speed.sh to split audio and process in parallel."
+    )
+
     return parser
 
 
@@ -207,6 +235,13 @@ def main():
     args = vars(parser.parse_args())
     if args["verbose"] is True:
         print(f"Args: {args}")
+    
+    # If speedup mode is enabled, call the shell script for the first audio file.
+    if args.pop("speedup"):
+        # For simplicity, we process the first audio file.
+        audio_file = args.pop("audio")[0]
+        run_speedup_mode(audio_file)
+        return    
 
     path_or_hf_repo: str = args.pop("model")
     output_dir: str = args.pop("output_dir")

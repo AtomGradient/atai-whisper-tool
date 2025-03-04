@@ -1,3 +1,4 @@
 include atai_whisper_tool/whisper/assets/mel_filters.npz
 include atai_whisper_tool/whisper/assets/multilingual.tiktoken
 include atai_whisper_tool/whisper/assets/gpt2.tiktoken
+include atai_whisper_tool/whisper-speed.sh
