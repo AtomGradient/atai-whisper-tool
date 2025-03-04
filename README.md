@@ -1,6 +1,11 @@
 # atai-whisper-tool
 
-A copy of the [mlx_whisper](https://github.com/ml-explore/mlx-examples/tree/main/whisper)
+### ⚡️⚡️⚡️ Long Audio Processing ⚡️⚡️⚡️  
+Parallel support for Whisper delivers **at least 20x speed improvements** on long audio files! Experience lightning-fast transcription:
+
+```bash
+atai-whisper-tool output_bushi.wav --speedup
+```
 
 **atai-whisper-tool** is a command-line tool that leverages the [OpenAI Whisper](https://github.com/openai/whisper) model with Apple MPS support for efficient audio transcription and translation. It supports multiple output formats and a wide range of languages, making it a versatile tool for speech recognition tasks.
 
@@ -42,12 +47,6 @@ If the package is published on PyPI, you can install it using:
 
 ```bash
 pip install atai-whisper-tool
-```
-
-### ⚡️ Long audio:
-Parrallel support for the whisper:
-```bash
-atai-whisper-tool output_bushi.wav --speedup
 ```
 
 ## Usage
@@ -216,4 +215,8 @@ atai-whisper-tool audio.wav --temperature 0.2 --best-of 5 --logprob-threshold -1
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## Note
+
+Most of the codes from [mlx_whisper](https://github.com/ml-explore/mlx-examples/tree/main/whisper)
 
