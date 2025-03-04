@@ -15,7 +15,6 @@ A copy of the [mlx_whisper](https://github.com/ml-explore/mlx-examples/tree/main
 
 ## Installation
 
-
 Install [`ffmpeg`](https://ffmpeg.org/):
 
 ```
@@ -43,6 +42,12 @@ If the package is published on PyPI, you can install it using:
 
 ```bash
 pip install atai-whisper-tool
+```
+
+### ⚡️ Long audio:
+Parrallel support for the whisper:
+```bash
+atai-whisper-tool output_bushi.wav --speedup
 ```
 
 ## Usage
@@ -206,13 +211,6 @@ atai-whisper-tool audio.wav --task translate --language fr --output-format srt
 atai-whisper-tool audio.wav --temperature 0.2 --best-of 5 --logprob-threshold -1.0 --compression-ratio-threshold 2.4
 ```
 - **Outcome:** Fine-tunes the transcription process with custom sampling and decoding parameters for improved quality.
-
-
-## Speed Up Whisper ⚡️
-
-```bash
-./whisper-speed.sh ~/Downloads/203-David-Krakauer-public.mp3
-```
 
 
 ## License
