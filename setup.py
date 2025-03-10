@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="atai-whisper-tool",
-    version="0.0.6",
+    version="0.0.7",
     author="AtomGradient",
     author_email="alex@atomgradient.com",
     description="OpenAI Whisper with Apple MPS support",
