@@ -495,13 +495,15 @@ def transcribe(
 
                 if verbose:
                     for segment in current_segments:
-                        start, end, text = (
-                            segment["start"],
-                            segment["end"],
-                            segment["text"],
-                        )
-                        line = f"[{_format_timestamp(start)} --> {_format_timestamp(end)}] {text}"
-                        print(make_safe(line))
+                        print(segment["text"].strip())
+                    # for segment in current_segments:
+                    #     start, end, text = (
+                    #         segment["start"],
+                    #         segment["end"],
+                    #         segment["text"],
+                    #     )
+                    #     line = f"[{_format_timestamp(start)} --> {_format_timestamp(end)}] {text}"
+                    #     print(make_safe(line))
 
                 # if a segment is instantaneous or does not contain text, clear it
                 for i, segment in enumerate(current_segments):

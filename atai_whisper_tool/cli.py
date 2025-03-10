@@ -233,8 +233,8 @@ def build_parser():
 def main():
     parser = build_parser()
     args = vars(parser.parse_args())
-    if args["verbose"] is True:
-        print(f"Args: {args}")
+    #if args["verbose"] is True:
+        # print(f"Args: {args}")
     
     # If speedup mode is enabled, call the shell script for the first audio file.
     if args.pop("speedup"):
